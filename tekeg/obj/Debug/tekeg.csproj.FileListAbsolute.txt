@@ -1,0 +1,16 @@
+C:\Users\Олнг\source\repos\tekeg\tekeg\bin\Debug\tekeg.exe.config
+C:\Users\Олнг\source\repos\tekeg\tekeg\bin\Debug\tekeg.exe
+C:\Users\Олнг\source\repos\tekeg\tekeg\bin\Debug\tekeg.pdb
+C:\Users\Олнг\source\repos\tekeg\tekeg\bin\Debug\EntityFramework.dll
+C:\Users\Олнг\source\repos\tekeg\tekeg\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Олнг\source\repos\tekeg\tekeg\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Олнг\source\repos\tekeg\tekeg\bin\Debug\Telegram.Bot.dll
+C:\Users\Олнг\source\repos\tekeg\tekeg\bin\Debug\EntityFramework.xml
+C:\Users\Олнг\source\repos\tekeg\tekeg\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Олнг\source\repos\tekeg\tekeg\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Олнг\source\repos\tekeg\tekeg\bin\Debug\Telegram.Bot.xml
+C:\Users\Олнг\source\repos\tekeg\tekeg\obj\Debug\tekeg.csprojAssemblyReference.cache
+C:\Users\Олнг\source\repos\tekeg\tekeg\obj\Debug\tekeg.csproj.CoreCompileInputs.cache
+C:\Users\Олнг\source\repos\tekeg\tekeg\obj\Debug\tekeg.csproj.CopyComplete
+C:\Users\Олнг\source\repos\tekeg\tekeg\obj\Debug\tekeg.exe
+C:\Users\Олнг\source\repos\tekeg\tekeg\obj\Debug\tekeg.pdb
