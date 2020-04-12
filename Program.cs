@@ -86,7 +86,7 @@ namespace CaloryBot
                                      });
         static void Main()
         {
-            BotClient = new TelegramBotClient("884830807:AAEkTEJFBM-Tt8RQFuYLL3d6r10r0T3iaxk");
+            BotClient = new TelegramBotClient("1242820192:AAHgqSYwFP0ohC3mUY0XjY084I2B_O5SCK0");
 
             BotClient.OnMessage += BotClient_OnMessage;
             BotClient.OnMessageEdited += BotClient_OnMessage;
