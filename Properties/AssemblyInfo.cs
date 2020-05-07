@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CaloryBot")]
+[assembly: AssemblyTitle("Calories")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("CaloryBot")]
+[assembly: AssemblyProduct("Calories")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("69cd45c9-0ed9-489f-b539-c9c3e77e3abf")]
+[assembly: Guid("48b362f9-8f06-44b1-9712-d09e5e107925")]
 
 // Version information for an assembly consists of the following four values:
 //
