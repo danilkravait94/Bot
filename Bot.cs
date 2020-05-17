@@ -9,9 +9,7 @@ namespace Calories
     public static class Bot
     {
         public static TelegramBotClient client;
-        //private static string token = "1138572393:AAHrMVwBvcv-BKGRRrgkkExL3eVZhnIQ74c";
-        //public static string Name = "cccalllorries_bot";
-        private static string token = "1242820192:AAHgqSYwFP0ohC3mUY0XjY084I2B_O5SCK0";
+        public static string token = "YourToken";
         public static string Name = "CaloriesCalculator_bot";
 
         private static List<Command> commandslist;
@@ -40,6 +38,7 @@ namespace Calories
             commandslist.Add(new MyOpinionCommand());
             commandslist.Add(new AddFoodCommand());
             commandslist.Add(new DayInfoCommand());
+            commandslist.Add(new RemoveFoodCommand());
 
 
             callbacklist = new List<CallBack>();
@@ -60,6 +59,7 @@ namespace Calories
             freecatchinglist.Add(new NameOfFoodCatch());
             freecatchinglist.Add(new TextOfFoodCatch());
             freecatchinglist.Add(new WeightOfFoodCatch());
+            freecatchinglist.Add(new FoodRemoveCatch());
 
             client = new TelegramBotClient(token);
             return client;

@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.IO;
 using System.Net;
 using Telegram.Bot;
 using Telegram.Bot.Types;
@@ -62,29 +63,30 @@ namespace Calories.Commands
                     return;
                 }
 
-                user.foodname = GetFood($"https://myownapik.azurewebsites.net/translate/{user.foodname}");
-                JObject search = JObject.Parse(GetFood($"https://myownapik.azurewebsites.net/food/{user.foodname}"));
+                user.foodname = await GetFood($"https://myownapik.azurewebsites.net/translate/{user.foodname}");
+                JObject search = JObject.Parse(await GetFood($"https://myownapik.azurewebsites.net/food/{user.foodname}"));
                 user.food = JsonConvert.DeserializeObject<Food>(search.ToString());
                 user.Command = "SELECTFOOD";
                 user.Multiply(user.weightoffood);
                 if (user.Language == "Russian")
                     await client.SendTextMessageAsync(message.Chat, $"{user.food.label}\n" +
-                        $"Калорийность - {user.food.nutrients.ENERC_KCAL}\n" +
-                        $"из которых:\n" +
-                        $"Белки - {user.food.nutrients.PROCNT}\n" +
-                        $"Жири - {user.food.nutrients.FAT}\n" +
-                        $"Углеводы - {user.food.nutrients.CHOCDF}\n",replyMarkup: SelectOrNoRus);
+                        $"Калорийность - {user.food.nutrients.ENERC_KCAL:0.0}\n" +
+                        $"Белки - {user.food.nutrients.PROCNT:0.0}\n" +
+                        $"Жири - {user.food.nutrients.FAT:0.0}\n" +
+                        $"Углеводы - {user.food.nutrients.CHOCDF:0.0}\n", replyMarkup: SelectOrNoRus);
                 else
                     await client.SendTextMessageAsync(message.Chat, $"{user.food.label}\n" +
-                        $"Calories - {user.food.nutrients.ENERC_KCAL}\n" +
-                        $"of which:\n" +
-                        $"Protein - {user.food.nutrients.PROCNT}\n" +
-                        $"Fat - {user.food.nutrients.FAT}\n" +
-                        $"Carbohydrates - {user.food.nutrients.CHOCDF}\n", replyMarkup: SelectOrNoEng);
+                        $"Calories - {user.food.nutrients.ENERC_KCAL:0.0}\n" +
+                        $"Protein - {user.food.nutrients.PROCNT:0.0}\n" +
+                        $"Fat - {user.food.nutrients.FAT:0.0}\n" +
+                        $"Carbohydrates - {user.food.nutrients.CHOCDF:0.0}\n", replyMarkup: SelectOrNoEng);
             }
             catch (ArgumentOutOfRangeException e)
             {
-                Console.WriteLine(e.Message);
+                using (StreamWriter sw = System.IO.File.AppendText(@"C:\Users\Олег\source\repos\CaloriesConsole\Message.txt"))
+                {
+                    sw.WriteLine($"{e.Message} by {user.Name}({user.ChatId}");
+                }
                 user.Command = "TextOfFood";
                 if (user.Language == "Russian")
                 {
@@ -95,7 +97,10 @@ namespace Calories.Commands
             }
             catch (WebException e)
             {
-                Console.WriteLine(e.Message);
+                using (StreamWriter sw = System.IO.File.AppendText(@"C:\Users\Олег\source\repos\CaloriesConsole\Message.txt"))
+                {
+                    sw.WriteLine($"{e.Message} by {user.Name}({user.ChatId})");
+                }
                 user.Command = "TextOfFood";
                 if (user.Language == "Russian")
                 {

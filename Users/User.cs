@@ -26,6 +26,7 @@ namespace Calories
         public string foodname = string.Empty;
         public double weightoffood = 0;
         public Food food;
+        public List<Food> DayFoodList = new List<Food>();
         public string Command { get; set; }
         public bool edit = false;
 
@@ -36,6 +37,13 @@ namespace Calories
             DayFats -= (int)food.nutrients.FAT;
             DayProteins -= (int)food.nutrients.PROCNT;
             DayCarbohydrates -= (int)food.nutrients.CHOCDF;
+        }
+        public void PlusToDay(Food food)
+        {
+            DayCalories += (int)food.nutrients.ENERC_KCAL;
+            DayFats += (int)food.nutrients.FAT;
+            DayProteins += (int)food.nutrients.PROCNT;
+            DayCarbohydrates += (int)food.nutrients.CHOCDF;
         }
         public void ToEmptyFood()
         {
@@ -74,6 +82,14 @@ namespace Calories
             food.nutrients.PROCNT *= weight;
             food.nutrients.FAT *= weight;
             food.nutrients.ENERC_KCAL *= weight;
+        }
+        public void UpdateUser()
+        {
+            DayProteins = Proteins;
+            DayFats = Fats;
+            DayCarbohydrates = Carbohydrates;
+            DayCalories = Calories;
+            DayFoodList = new List<Food>();
         }
     }
 }

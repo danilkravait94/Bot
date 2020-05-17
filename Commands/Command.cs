@@ -1,5 +1,7 @@
 ﻿using System.IO;
 using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 
@@ -13,36 +15,25 @@ namespace Calories.Commands
         {
             return command.Contains(this.Name);
         }
-        public static string GetFood(string linkoffood)
-        {
-            WebRequest request = WebRequest.Create(linkoffood);
-            request.Method = "GET";
-            WebResponse response = request.GetResponse();
-            Stream s = response.GetResponseStream();
-            StreamReader reader = new StreamReader(s);
-            string answer = reader.ReadToEnd();
-            response.Close();
-            return answer;
-        }
         public async void SendMessageCalories(Message message, TelegramBotClient client, long id,string goal)
         {
             var user = DB.Users.Find(id);
 
             if (user.Language == "Russian")
-                await client.SendTextMessageAsync(message.Chat, $"Для {goal}:\n" +
+                await client.SendTextMessageAsync(message.Chat.Id, $"Для {goal}:\n" +
                 $"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{user.Calories} калорий каждый день\n" +
                 $"из которых:\n" +
-                $"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{user.Proteins} белков\n" +
-                $"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{user.Fats} жиров\n" +
-                $"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{user.Carbohydrates} углеводов\n" +
+                $"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{user.Proteins} грамм белка\n" +
+                $"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{user.Fats} грамм жиров\n" +
+                $"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{user.Carbohydrates} грамм углеводов\n" +
                 $"напиши\n/addfood [название] [вес] - чтобы добавить еду");
             else
-                await client.SendTextMessageAsync(message.Chat, $"For {goal}:\n" +
+                await client.SendTextMessageAsync(message.Chat.Id, $"For {goal}:\n" +
                 $"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{user.Calories} calories per day\n" +
                 $"of which:\n" +
-                $"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{user.Proteins} proteins\n" +
-                $"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{user.Fats} fats\n" +
-                $"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{user.Carbohydrates} carbohydrates\n" +
+                $"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{user.Proteins} grams proteins\n" +
+                $"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{user.Fats} grams fats\n" +
+                $"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{user.Carbohydrates} grams carbohydrates\n" +
                 $"write\n/addfood [name] [weight] - to add food");
         }
     }

@@ -11,7 +11,7 @@ namespace Calories.FreeCatchings
         public override async void Execute(Message message, TelegramBotClient client, long id)
         {
             var user = DB.Users.Find(id);
-            if (float.TryParse(message.Text, out float agefloat))
+            if (float.TryParse(message.Text.Replace('.', ','), out float agefloat))
             {
                 int age = (int)agefloat;
                 if (age <= 5 || age > 95)

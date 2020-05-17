@@ -1,6 +1,5 @@
 ﻿using Telegram.Bot;
 using Telegram.Bot.Args;
-using Telegram.Bot.Types;
 
 namespace Calories.CallBacks
 {
@@ -20,17 +19,17 @@ namespace Calories.CallBacks
                 await client.SendTextMessageAsync(e.CallbackQuery.From.Id, $"Для {goal}:\n" +
                 $"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{user.Calories} калорий каждый день\n" +
                 $"из которых:\n" +
-                $"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{user.Proteins} белков\n" +
-                $"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{user.Fats} жиров\n" +
-                $"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{user.Carbohydrates} углеводов\n" +
+                $"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{user.Proteins} грамм белка\n" +
+                $"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{user.Fats} грамм жиров\n" +
+                $"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{user.Carbohydrates} грамм углеводов\n" +
                 $"напиши\n/addfood [название] [вес] - чтобы добавить еду");
             else
                 await client.SendTextMessageAsync(e.CallbackQuery.From.Id, $"For {goal}:\n" +
                 $"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{user.Calories} calories per day\n" +
                 $"of which:\n" +
-                $"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{user.Proteins} proteins\n" +
-                $"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{user.Fats} fats\n" +
-                $"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{user.Carbohydrates} carbohydrates\n" +
+                $"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{user.Proteins} grams proteins\n" +
+                $"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{user.Fats} grams fats\n" +
+                $"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{user.Carbohydrates} grams carbohydrates\n" +
                 $"write\n/addfood [name] [weight] - to add food");
         }
     }

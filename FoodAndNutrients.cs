@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Calories
+﻿namespace Calories
 {
     public class Food
     {
         public string label { get; set; }
         public Nutrients nutrients { get; set; }
+        public override string ToString()
+        {
+            return string.Format($"{label} - {nutrients.ENERC_KCAL:0.0}/" +
+                $"{nutrients.PROCNT:0.0}/{nutrients.FAT:0.0}/{nutrients.CHOCDF:0.0}");
+        }
     }
     public class Nutrients
     {

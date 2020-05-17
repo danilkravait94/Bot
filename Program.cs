@@ -6,10 +6,12 @@ using Telegram.Bot.Types.Enums;
 using Calories.Commands;
 using Calories.CallBacks;
 using Calories.FreeCatchings;
+using Calories.QuartzInfo;
+using System.IO;
 
 namespace Calories
 {
-    class Program:Class_for_DB
+    class Program : Class_for_DB
     {
         private static TelegramBotClient BotClient;
         public static IReadOnlyList<Command> commands;
@@ -19,6 +21,7 @@ namespace Calories
         //public static UserContext DB = new UserContext();
         static void Main()
         {
+
             BotClient = Bot.Get();
             commands = Bot.Commands;
             callbacks = Bot.CallBacks;
@@ -27,18 +30,19 @@ namespace Calories
             BotClient.OnMessage += BotClient_OnMessage;
             BotClient.OnMessageEdited += BotClient_OnMessage;
             BotClient.OnCallbackQuery += BotClient_OnCallbackQuery;
+            StartSending.Start();
             BotClient.StartReceiving();
             Console.ReadKey();
         }
         private static async void BotClient_OnMessage(object sender, MessageEventArgs e)
         {
             if (e.Message.Text == null || e.Message.Type != MessageType.Text) return;
-            Console.WriteLine("The " + e.Message.Chat.FirstName + " Write: " + e.Message.Text);
             //return;
             //if (e.Message.Chat.Id != 386219611) return;
 
             var users = DB.Users;
             var message = e.Message;
+
             foreach (User u in users) { if (u.ChatId == message.Chat.Id.ToString()) here = true; }
 
             if (!here)
@@ -80,12 +84,15 @@ namespace Calories
                     }
                 }
             }
+            using (StreamWriter sw = System.IO.File.AppendText(@"C:\Users\Олег\source\repos\CaloriesConsole\Message.txt"))
+            {
+                sw.WriteLine($"{DateTime.Now} the {message.Chat.FirstName}({message.Chat.Id}) Write: {e.Message.Text}");
+            }
             await DB.SaveChangesAsync();
+
         }
         private static async void BotClient_OnCallbackQuery(object sender, CallbackQueryEventArgs e)
         {
-            Console.WriteLine("The " + e.CallbackQuery.From.FirstName + " Write: " + e.CallbackQuery.Data);
-            DB.SaveChanges();
             var users = DB.Users;
             foreach (User u in users)
             {
@@ -100,6 +107,10 @@ namespace Calories
                         }
                     }
                 }
+            }
+            using (StreamWriter sw = System.IO.File.AppendText(@"C:\Users\Олег\source\repos\CaloriesConsole\Message.txt"))
+            {
+                sw.WriteLine($"{DateTime.Now} the {e.CallbackQuery.From.FirstName}({e.CallbackQuery.From.Id}) Select: {e.CallbackQuery.Data}");
             }
             await DB.SaveChangesAsync();
         }

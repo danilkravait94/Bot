@@ -29,3 +29,8 @@ C:\Users\Олег\source\repos\CaloriesConsole\obj\Debug\Calories.csproj.CoreCom
 C:\Users\Олег\source\repos\CaloriesConsole\obj\Debug\Calories.csproj.CopyComplete
 C:\Users\Олег\source\repos\CaloriesConsole\obj\Debug\Calories.exe
 C:\Users\Олег\source\repos\CaloriesConsole\obj\Debug\Calories.pdb
+C:\Users\Олег\source\repos\CaloriesConsole\bin\Debug\Quartz.dll
+C:\Users\Олег\source\repos\CaloriesConsole\bin\Debug\Quartz.pdb
+C:\Users\Олег\source\repos\CaloriesConsole\bin\Debug\Quartz.xml
+C:\Users\Олег\source\repos\CaloriesConsole\obj\Debug\Calories.Migrations.InitialCreate.resources
+C:\Users\Олег\source\repos\CaloriesConsole\obj\Debug\Calories.csproj.GenerateResource.cache

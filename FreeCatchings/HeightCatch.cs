@@ -32,7 +32,7 @@ namespace Calories.FreeCatchings
         public override async void Execute(Message message, TelegramBotClient client, long id)
         {
             var user = DB.Users.Find(id);
-            if (float.TryParse(message.Text, out float height))
+            if (float.TryParse(message.Text.Replace('.', ','), out float height))
             {
                 if (height <= 30 || height > 250)
                 {

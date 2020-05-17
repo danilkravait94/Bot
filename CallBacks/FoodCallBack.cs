@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Telegram.Bot;
+﻿using Telegram.Bot;
 using Telegram.Bot.Args;
 
 namespace Calories.CallBacks
@@ -19,11 +14,12 @@ namespace Calories.CallBacks
             {
                 user.Command = " ";
                 user.MinusOfDay(user.food);
+                user.DayFoodList.Add(user.food);
                 user.ToEmptyFood();
                 if (user.Language == "Russian")
                     await client.SendTextMessageAsync(e.CallbackQuery.From.Id, "Продукт добавлен");
                 else
-                    await client.SendTextMessageAsync(e.CallbackQuery.From.Id, "The food was added");
+                    await client.SendTextMessageAsync(e.CallbackQuery.From.Id, "The food has been added");
             }
             else if (e.CallbackQuery.Data == "No")
             {
